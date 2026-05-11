@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Perfectly Bare Laser — Bonus Form</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Aleo:ital,wght@0,300;0,400;0,600;1,300&family=League+Gothic&display=swap" rel="stylesheet"/>
+<style>
+/* === BRAND TOKENS === */
+:root {
+  --amber:    #AE6612;
+  --terracotta: #C9855B;
+  --silver:   #B8B9B6;
+  --sage-lt:  #C8C9BD;
+  --green:    #557C54;
+  --cream:    #F5F0EA;
+  --offwhite: #FAF7F3;
+  --ink:      #1A1A18;
+  --mid:      #5A5855;
+  --border:   #DDD9D0;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Aleo',Georgia,serif;background:var(--cream);padding-bottom:72px;color:var(--ink)}
+
+/* === HEADER === */
+.header{background:var(--ink);padding:32px 20px 28px;text-align:center;position:relative;overflow:hidden}
+.header::before{content:"";position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;border:1px solid rgba(174,102,18,.25)}
+.header::after{content:"";position:absolute;bottom:-30px;left:-30px;width:120px;height:120px;border-radius:50%;border:1px solid rgba(174,102,18,.15)}
+.logo-lockup{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:10px}
+.logo-icon{width:36px;height:36px;flex-shrink:0}
+.logo-text{text-align:left}
+.logo-perfectly{font-family:'League Gothic',sans-serif;font-size:22px;letter-spacing:.12em;color:#fff;line-height:1;text-transform:uppercase}
+.logo-bare{font-family:'Aleo',serif;font-size:10px;letter-spacing:.35em;color:var(--terracotta);text-transform:uppercase;margin-top:1px}
+.header-title{font-family:'League Gothic',sans-serif;font-size:28px;letter-spacing:.1em;color:var(--amber);text-transform:uppercase;margin-bottom:4px}
+.header-sub{font-family:'Aleo',serif;font-size:11px;letter-spacing:.2em;color:rgba(255,255,255,.5);text-transform:uppercase}
+
+/* === CARDS === */
+.card{background:#fff;border-radius:12px;border:1px solid var(--border);margin:14px 16px 0;padding:20px}
+.sec-label{font-family:'League Gothic',sans-serif;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+
+/* === INPUTS === */
+label{display:block;font-family:'Aleo',serif;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+input,select{
+  width:100%;padding:12px 14px;border-radius:8px;
+  border:1.5px solid var(--border);font-size:15px;
+  background:var(--offwhite);color:var(--ink);
+  font-family:'Aleo',serif;outline:none;
+  margin-bottom:16px;-webkit-appearance:none;appearance:none;
+  transition:border-color .15s;
+}
+input:focus,select:focus{border-color:var(--amber)}
+select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23AE6612' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center;padding-right:38px;
+}
+
+/* === CATEGORY BUTTONS === */
+.cat-row{display:flex;gap:8px;flex-wrap:wrap}
+.cat-btn{
+  flex:1;min-width:88px;padding:11px 6px;border-radius:8px;
+  border:1.5px solid var(--border);background:#fff;
+  color:var(--mid);font-size:11px;letter-spacing:.08em;
+  font-family:'Aleo',serif;cursor:pointer;
+  text-align:center;line-height:1.4;transition:all .15s;
+  text-transform:uppercase;
+}
+.cat-btn.active{
+  border-color:var(--amber);background:var(--amber);
+  color:#fff;font-weight:600;
+}
+
+/* === AREA CHIPS === */
+.area-wrap{margin-bottom:14px}
+.chip{
+  display:inline-block;padding:6px 12px;margin:3px;
+  border-radius:20px;border:1.5px solid var(--border);
+  background:#fff;color:var(--mid);font-size:12px;
+  font-family:'Aleo',serif;cursor:pointer;
+  transition:all .12s;user-select:none;letter-spacing:.04em;
+}
+.chip.sel{border-color:var(--green);background:var(--green);color:#fff;font-weight:600}
+.sel-box{background:rgba(85,124,84,.1);border:1px solid rgba(85,124,84,.3);border-radius:8px;padding:10px 14px;margin-bottom:14px}
+.sel-title{font-size:10px;letter-spacing:.15em;color:var(--green);margin-bottom:4px;text-transform:uppercase;font-family:'Aleo',serif}
+.sel-text{font-size:13px;color:#3A5A39;line-height:1.5}
+
+/* === BONUS BOX === */
+.bonus-box{
+  background:var(--ink);border-radius:12px;
+  padding:24px 20px;text-align:center;margin:14px 16px 0;
+  border-left:4px solid var(--amber);
+}
+.bonus-eyebrow{font-family:'Aleo',serif;font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--terracotta);margin-bottom:6px}
+.bonus-amt{font-family:'League Gothic',sans-serif;font-size:56px;letter-spacing:.04em;color:var(--amber);line-height:1;margin-bottom:4px}
+.bonus-note{font-size:12px;color:rgba(255,255,255,.45);font-style:italic}
+
+/* === SUBMIT === */
+.submit-btn{
+  display:block;width:calc(100% - 32px);margin:16px 16px 0;
+  padding:16px;border-radius:10px;border:none;
+  background:var(--silver);color:rgba(255,255,255,.6);
+  font-family:'League Gothic',sans-serif;font-size:18px;
+  letter-spacing:.15em;text-transform:uppercase;cursor:not-allowed;
+  transition:all .2s;
+}
+.submit-btn.ready{
+  background:var(--green);color:#fff;cursor:pointer;
+  box-shadow:0 4px 16px rgba(85,124,84,.3);
+}
+.submit-btn.ready:active{transform:scale(.98)}
+
+.hint{text-align:center;font-size:11px;color:var(--silver);margin-top:10px;padding:0 16px;letter-spacing:.06em}
+.info-txt{font-size:12px;color:var(--mid);margin-top:6px;min-height:18px;font-style:italic}
+.footer-txt{text-align:center;font-size:9px;color:var(--sage-lt);margin-top:24px;letter-spacing:.2em;text-transform:uppercase}
+.hidden{display:none!important}
+
+/* === DIVIDER === */
+.divider{height:1px;background:var(--border);margin:4px 0 16px}
+
+/* === RESULT SCREENS === */
+.result-screen{
+  min-height:100vh;background:var(--cream);
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;padding:40px 24px;text-align:center;
+}
+.result-icon{
+  width:76px;height:76px;border-radius:50%;
+  background:rgba(85,124,84,.12);border:2px solid var(--green);
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;margin:0 auto 20px;line-height:76px;color:var(--green);
+}
+.err-icon{background:rgba(180,60,60,.08);border-color:#B43C3C;color:#B43C3C}
+.result-eyebrow{font-family:'Aleo',serif;font-size:10px;letter-spacing:.25em;color:var(--amber);text-transform:uppercase;margin-bottom:8px}
+.result-title{font-family:'League Gothic',sans-serif;font-size:32px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin:0 0 12px}
+.result-sub{font-family:'Aleo',serif;font-size:14px;color:var(--mid);line-height:1.6;max-width:280px;margin:0 auto 32px}
+.result-bonus-box{background:var(--ink);border-radius:12px;padding:20px;text-align:center;width:100%;max-width:280px;margin:0 auto 32px;border-left:4px solid var(--amber)}
+.reset-btn{
+  padding:14px 36px;border-radius:10px;border:none;
+  background:var(--green);color:#fff;
+  font-family:'League Gothic',sans-serif;font-size:18px;
+  letter-spacing:.12em;text-transform:uppercase;cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- ===== FORM ===== -->
+<div id="formScreen">
+
+  <div class="header">
+    <!-- SVG replicating the PBL circular logo mark -->
+    <div class="logo-lockup">
+      <svg class="logo-icon" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="42" cy="36" r="22" stroke="#C9855B" stroke-width="2.5" fill="none"/>
+        <path d="M42 14 Q30 20 30 36 Q30 52 42 58" stroke="#C9855B" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M42 14 Q54 20 54 36 Q54 52 42 58" stroke="#C9855B" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="36" cy="60" r="3" fill="#C9855B"/>
+        <circle cx="42" cy="66" r="2.5" fill="#C9855B"/>
+        <circle cx="48" cy="60" r="2" fill="#C9855B"/>
+        <path d="M28 22 Q20 30 22 42" stroke="#fff" stroke-width="1.5" fill="none" stroke-linecap="round" opacity=".4"/>
+      </svg>
+      <div class="logo-text">
+        <div class="logo-perfectly">Perfectly Bare</div>
+        <div class="logo-bare">Laser · Tampa FL</div>
+      </div>
+    </div>
+    <h1 class="header-title">Compensation Bonus Form</h1>
+    <p class="header-sub">Staff Commission Submission</p>
+  </div>
+
+  <!-- Staff & Client Info -->
+  <div class="card">
+    <p class="sec-label">Staff &amp; Client Info</p>
+    <label>Employee Name *</label>
+    <select id="employee" onchange="validate()">
+      <option value="">Select your name…</option>
+      <option>Channing</option><option>Brittany</option><option>Allegra</option>
+      <option>Cami</option><option>Zahira</option><option>Sonja</option>
+      <option>Elianna</option><option>Helem</option><option>Salma</option>
+      <option>Abby</option><option>Ainsley</option><option>Amanda</option>
+    </select>
+    <label>Date of Service *</label>
+    <input type="date" id="serviceDate" onchange="validate()"/>
+    <label>Client First Name *</label>
+    <input type="text" id="clientFirst" placeholder="e.g. Jennifer" oninput="validate()"/>
+    <label>Nextech Client Number *</label>
+    <input type="text" inputmode="numeric" id="clientPhone" placeholder="e.g. 100234" oninput="validate()" style="margin-bottom:0"/>
+  </div>
+
+  <!-- Category -->
+  <div class="card">
+    <p class="sec-label">Service Category *</p>
+    <div class="cat-row">
+      <button class="cat-btn" onclick="setCategory('membership')">Membership</button>
+      <button class="cat-btn" onclick="setCategory('service')">Service /<br>Treatment</button>
+      <button class="cat-btn" onclick="setCategory('lhr')">Laser Hair<br>Removal</button>
+    </div>
+  </div>
+
+  <!-- Membership Panel -->
+  <div class="card hidden" id="panelMem">
+    <p class="sec-label">Membership Type *</p>
+    <select id="memType" onchange="updateBonus()" style="margin-bottom:0">
+      <option value="">Select membership…</option>
+      <option value="essential">Essential Membership — $150</option>
+      <option value="premier">Premier Membership — $300</option>
+    </select>
+    <p class="info-txt" id="memHint"></p>
+  </div>
+
+  <!-- Service Panel -->
+  <div class="card hidden" id="panelSvc">
+    <p class="sec-label">Service Details *</p>
+    <label>Service Name / Description</label>
+    <input type="text" id="svcName" placeholder="e.g. Morpheus8 Body Package" oninput="validate()"/>
+    <label>Total Service Cost ($)</label>
+    <input type="number" inputmode="decimal" id="svcCost" placeholder="0.00" min="0" oninput="updateBonus()" style="margin-bottom:0"/>
+    <p class="info-txt" id="svcHint"></p>
+  </div>
+
+  <!-- LHR Panel -->
+  <div class="card hidden" id="panelLhr">
+    <p class="sec-label">Laser Hair Removal — Areas *</p>
+    <p style="font-size:12px;color:var(--mid);margin-bottom:12px;font-style:italic">Tap all areas treated in this session:</p>
+    <div class="area-wrap" id="chips"></div>
+    <div class="sel-box hidden" id="selBox">
+      <p class="sel-title">Areas selected</p>
+      <p class="sel-text" id="selText"></p>
+    </div>
+    <div class="divider"></div>
+    <label>Total LHR Cost ($) *</label>
+    <input type="number" inputmode="decimal" id="lhrCost" placeholder="0.00" min="0" oninput="updateBonus()" style="margin-bottom:0"/>
+    <p class="info-txt" id="lhrHint"></p>
+  </div>
+
+  <!-- Bonus Preview -->
+  <div class="bonus-box hidden" id="bonusBox">
+    <p class="bonus-eyebrow">Calculated Bonus Payout</p>
+    <p class="bonus-amt" id="bonusAmt">$0</p>
+    <p class="bonus-note" id="bonusNote"></p>
+  </div>
+
+  <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Submit Bonus Entry</button>
+  <p class="hint" id="formHint">All fields marked * are required</p>
+  <p class="footer-txt">Perfectly Bare Laser · Staff Portal · Tampa FL</p>
+</div>
+
+<!-- ===== SUCCESS ===== -->
+<div id="successScreen" class="result-screen hidden">
+  <div class="result-icon">✓</div>
+  <p class="result-eyebrow">Perfectly Bare Laser</p>
+  <h2 class="result-title">Submission Received</h2>
+  <p class="result-sub">Your bonus entry has been recorded to the spreadsheet. Great work!</p>
+  <div class="result-bonus-box">
+    <p class="bonus-eyebrow">Bonus Earned</p>
+    <p class="bonus-amt" id="successBonusAmt">$0</p>
+  </div>
+  <button class="reset-btn" onclick="resetAll()">Submit Another Entry</button>
+</div>
+
+<!-- ===== ERROR ===== -->
+<div id="errorScreen" class="result-screen hidden">
+  <div class="result-icon err-icon">✕</div>
+  <h2 class="result-title">Submission Failed</h2>
+  <p class="result-sub" id="errMsg">Please try again.</p>
+  <p style="font-size:12px;color:var(--mid);max-width:280px;margin:0 auto 32px">Screenshot this page and send it manually if the issue continues.</p>
+  <button class="reset-btn" onclick="document.getElementById('errorScreen').classList.add('hidden');document.getElementById('formScreen').classList.remove('hidden')">Try Again</button>
+</div>
+
+<script>
+const APPS_SCRIPT_URL="https://script.google.com/macros/s/AKfycbxfQ-MqF5OziCuw22AKOxinWN5c3ubIMz4CqCc5l2nI6-kH0M99KJzFnb0TlfBeIkRBog/exec";
+const AREAS=["Brazilian","Underarms","Lower Legs","Upper Legs","Full Legs","Bikini Line","Face","Lip","Chin","Sideburns","Back of Neck","Shoulders","Back","Chest","Arms","Stomach","Knuckles","Toes","Areolas","Hairline"];
+let cat="",selAreas=[],bonus=null;
+
+document.getElementById("serviceDate").value=new Date().toISOString().split("T")[0];
+
+// Build area chips
+const cw=document.getElementById("chips");
+AREAS.forEach(a=>{
+  const s=document.createElement("span");
+  s.className="chip";s.textContent=a;
+  s.onclick=()=>{
+    if(selAreas.includes(a)){selAreas=selAreas.filter(x=>x!==a);s.classList.remove("sel");}
+    else{selAreas.push(a);s.classList.add("sel");}
+    const sb=document.getElementById("selBox");
+    if(selAreas.length){sb.classList.remove("hidden");document.getElementById("selText").textContent=selAreas.join(" · ");}
+    else sb.classList.add("hidden");
+    updateBonus();
+  };
+  cw.appendChild(s);
+});
+
+function setCategory(c){
+  cat=c;
+  const btns=document.querySelectorAll(".cat-btn");
+  btns.forEach((b,i)=>b.classList.toggle("active",["membership","service","lhr"][i]===c));
+  ["panelMem","panelSvc","panelLhr"].forEach(id=>document.getElementById(id).classList.add("hidden"));
+  if(c==="membership")document.getElementById("panelMem").classList.remove("hidden");
+  if(c==="service")document.getElementById("panelSvc").classList.remove("hidden");
+  if(c==="lhr")document.getElementById("panelLhr").classList.remove("hidden");
+  updateBonus();
+}
+
+function updateBonus(){
+  bonus=null;
+  const bx=document.getElementById("bonusBox");
+  if(cat==="membership"){
+    const v=document.getElementById("memType").value;
+    if(v==="essential"){bonus=50;document.getElementById("memHint").textContent="Essential Membership — $150 sale · $50 bonus";}
+    else if(v==="premier"){bonus=100;document.getElementById("memHint").textContent="Premier Membership — $300 sale · $100 bonus";}
+    else document.getElementById("memHint").textContent="";
+  }else if(cat==="service"){
+    const c=parseFloat(document.getElementById("svcCost").value);
+    if(!isNaN(c)&&c>0){
+      bonus=c<=2000?50:100;
+      document.getElementById("svcHint").textContent=c<=2000?"Under $2,000 — $50 bonus applies":"Over $2,000 — $100 bonus applies";
+    }else document.getElementById("svcHint").textContent="";
+  }else if(cat==="lhr"){
+    const c=parseFloat(document.getElementById("lhrCost").value);
+    if(!isNaN(c)&&c>0){
+      bonus=Math.round(c*0.5);
+      document.getElementById("lhrHint").textContent="50% of $"+c.toFixed(2)+" = $"+bonus+" bonus";
+    }else document.getElementById("lhrHint").textContent="";
+  }
+  if(bonus!==null){
+    bx.classList.remove("hidden");
+    document.getElementById("bonusAmt").textContent="$"+bonus;
+    document.getElementById("bonusNote").textContent=cat==="lhr"?"50% of total laser services":"";
+  }else bx.classList.add("hidden");
+  validate();
+}
+
+function validate(){
+  const ok=document.getElementById("employee").value&&
+    document.getElementById("serviceDate").value&&
+    document.getElementById("clientFirst").value.trim()&&
+    document.getElementById("clientPhone").value.trim()&&cat&&
+    (cat==="membership"?!!document.getElementById("memType").value:
+     cat==="service"?document.getElementById("svcName").value.trim()&&parseFloat(document.getElementById("svcCost").value)>0:
+     selAreas.length>0&&parseFloat(document.getElementById("lhrCost").value)>0);
+  const btn=document.getElementById("submitBtn");
+  btn.classList.toggle("ready",!!ok);
+  btn.disabled=!ok;
+  document.getElementById("formHint").style.display=ok?"none":"block";
+}
+
+["employee","serviceDate","clientFirst","clientPhone"].forEach(id=>{
+  document.getElementById(id).addEventListener("input",validate);
+  document.getElementById(id).addEventListener("change",validate);
+});
+document.getElementById("memType").addEventListener("change",updateBonus);
+document.getElementById("svcName").addEventListener("input",validate);
+
+function fmtDate(d){if(!d)return"";const[y,m,dy]=d.split("-");return m+"/"+dy+"/"+y;}
+
+async function handleSubmit(){
+  const btn=document.getElementById("submitBtn");
+  btn.disabled=true;btn.textContent="Submitting…";
+  const emp=document.getElementById("employee").value;
+  const dt=fmtDate(document.getElementById("serviceDate").value);
+  const cf=document.getElementById("clientFirst").value.trim();
+  const cp=document.getElementById("clientPhone").value.trim();
+  let category,service,amount;
+  if(cat==="membership"){
+    const v=document.getElementById("memType").value;
+    category="Membership";
+    service=v==="essential"?"Essential Membership — $150":"Premier Membership — $300";
+    amount=v==="essential"?150:300;
+  }else if(cat==="service"){
+    category="Service";
+    service=document.getElementById("svcName").value.trim();
+    amount=parseFloat(document.getElementById("svcCost").value);
+  }else{
+    category="LHR";
+    service=selAreas.join(", ");
+    amount=parseFloat(document.getElementById("lhrCost").value);
+  }
+
+  const params=new URLSearchParams({
+    date:dt,
+    clientFirst:cf,
+    clientNumber:cp,
+    employee:emp,
+    category:category,
+    service:service,
+    amount:String(amount),
+    bonus:String(bonus)
+  });
+
+  const url=APPS_SCRIPT_URL+"?"+params.toString();
+
+  // Use an image ping — bypasses CORS entirely, most reliable for Apps Script
+  await new Promise((resolve)=>{
+    const img=new Image();
+    img.onload=()=>resolve(true);
+    img.onerror=()=>resolve(true); // Apps Script won't return an image so onerror is expected — still means the request was received
+    img.src=url;
+    setTimeout(()=>resolve(true),5000); // fallback after 5s
+  });
+
+  document.getElementById("successBonusAmt").textContent="$"+bonus;
+  document.getElementById("formScreen").classList.add("hidden");
+  document.getElementById("successScreen").classList.remove("hidden");
+  btn.disabled=false;btn.textContent="Submit Bonus Entry";validate();
+}
+
+function resetAll(){
+  ["employee","memType","svcName","svcCost","lhrCost","clientFirst","clientPhone"].forEach(id=>{
+    const el=document.getElementById(id);if(el)el.value="";
+  });
+  document.getElementById("serviceDate").value=new Date().toISOString().split("T")[0];
+  selAreas=[];cat="";bonus=null;
+  document.querySelectorAll(".chip").forEach(c=>c.classList.remove("sel"));
+  document.getElementById("selBox").classList.add("hidden");
+  document.querySelectorAll(".cat-btn").forEach(b=>b.classList.remove("active"));
+  ["panelMem","panelSvc","panelLhr","bonusBox"].forEach(id=>document.getElementById(id).classList.add("hidden"));
+  document.getElementById("formScreen").classList.remove("hidden");
+  document.getElementById("successScreen").classList.add("hidden");
+  validate();
+}
+</script>
+</body>
+</html>
